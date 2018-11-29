@@ -18,6 +18,7 @@ class ConverterRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     final unitWidgets = units.map((Unit unit) {
       return Container(
+        color: color,
         margin: EdgeInsets.all(8.0),
         padding: EdgeInsets.all(16.0),
         child: Column(
@@ -28,14 +29,28 @@ class ConverterRoute extends StatelessWidget {
             ),
             Text(
               'Conversion: ${unit.conversion}',
-               style: Theme.of(context).textTheme.subhead,
+              style: Theme.of(context).textTheme.subhead,
             ),
           ],
         ),
       );
     }).toList();
-    return ListView(
-      children: unitWidgets,
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Unit Converter',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 30.0,
+          ),
+        ),
+        centerTitle: true,
+      ),
+      body: ListView(
+        children: unitWidgets,
+      ),
     );
+
   }
 }
